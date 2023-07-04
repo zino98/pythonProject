@@ -10,14 +10,14 @@ d = [(-1,0), (1,0), (0,-1), (0,1)]
 result = 0
 def bfs():
     queue = deque()
-    test_graph = copy.deepcopy(graph)   #원본 데이터 그대로 복사, 훼손 X
+    test_graph = copy.deepcopy(graph)   # 원본 데이터 그대로 복사, 훼손 X
 
     for i in range(N):
         for k in range(M):
             if test_graph[i][k] == 2:
                 queue.append((i,k))
 
-    while queue:
+    while queue:                       # 탐색 시작
         x, y = queue.popleft()
 
         for dx, dy in d:
