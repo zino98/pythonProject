@@ -6,7 +6,7 @@ def bfs():
     global a, b, c, total, visited
     queue = deque()
     queue.append((a, b))
-    visited[a][b] = 1
+    visited[a][b] = True
 
     while queue:
         x, y = queue.popleft()
@@ -28,19 +28,18 @@ def bfs():
             else:
                 continue
 
-
             c = total - a - b
             x = min(a,b,c)
             y = max(a,b,c)
 
             if not visited[x][y]:
-                visited[x][y] = -1
+                visited[x][y] = True
                 queue.append((x,y))
     print(0)
 
 a, b, c = map(int, input().split())
 total = a + b + c
-visited = [[-1] * (total + 1) for _ in range(total + 1)]
+visited = [[False] * (total + 1) for _ in range(total + 1)]
 
 if total % 3 != 0:
     print(0)
