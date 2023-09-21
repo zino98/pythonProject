@@ -47,7 +47,7 @@ def exce(i,j):
 
             tmp += board[ni][nj]
 
-    maxValue = max(maxValue, tmp)
+        maxValue = max(maxValue, tmp)
 
 
 for i in range(N):
