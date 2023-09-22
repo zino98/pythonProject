@@ -37,7 +37,7 @@ while True:
         visited = bfs(cr, cc)
         is_possible = True # 로봇 청소기가 모든 더러운 칸을 방문할 수 있는지 확인
         for idx, rc in enumerate(dusts):
-            temp = visited[rc[0]][rc[1]]
+            temp = visited[rc[0]][rc[1]] # rc[0]: x 좌표, rc[1]: y 좌표
             if not temp: # 로봇 청소기가 방문할 수 없는 칸이 나오면 False
                 print(-1)
                 is_possible = False
