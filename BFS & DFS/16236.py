@@ -6,7 +6,7 @@ board = [list(map(int, input().split())) for _ in range(N)]
 
 # 필요한 데이터 선언
 shark_size = 2
-now_x, now_y = 0
+now_x, now_y = 0, 0
 INF = 1e9
 
 # 이동
