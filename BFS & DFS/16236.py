@@ -1,20 +1,26 @@
 from collections import deque
 
+# 입력, 보드
 N = int(input())
 board = [list(map(int, input().split())) for _ in range(N)]
 
+# 필요한 데이터 선언
 shark_size = 2
 now_x, now_y = 0
+INF = 1e9
 
+# 이동
 dx = [1,-1,0,0]
 dy = [0,0,1,-1]
 
+# 아기 상어 초기값 저장
 for i in range(N):
     for j in range(N):
         if board[i][j] == 9:
             now_x, now_y = i, j
             board[i][j] = 0
 
+# 아기 상어가 이동할 수 있는지
 def BFS():
     visited = [[-1]*N for _ in range(N)]
     visited[now_x][now_y] = 0
@@ -35,11 +41,12 @@ def BFS():
                     queue.append((nx, ny))
 
 
-        return visited
+    return visited
 
+# 아기 상어가 먹을 수 있는지
 def Solve(visited):
-    x, y = 0
-    min_distance = 1e9
+    x, y = 0, 0
+    min_distance = INF
 
     for i in range(N):
         for j in range(N):
@@ -49,7 +56,7 @@ def Solve(visited):
                     x, y = i, j
 
 
-    if min_distance == 1e9:
+    if min_distance == INF:
         return False
 
     else:
