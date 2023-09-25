@@ -40,7 +40,7 @@ if __name__ == "__main__":
     n, m = map(int, input().split())
 
     coin = deque()
-    board = [list(input().rstrip()) for _ in range(n)]
+    board = [list(input().rstrip()) for _ in range(n)] # 입력
     temp = []
     for i in range(n):
         for j in range(m):
