@@ -25,7 +25,9 @@ def bfs():
                     nx1, ny1 = x1, y1
                 if board[nx2][ny2] == "#":
                     nx2, ny2 = x2, y2
+
                 coin.append((nx1, ny1, nx2, ny2, cnt + 1))
+
             elif 0 <= nx1 < n and 0 <= ny1 < m:  # coin2가 떨어진 경우
                 return cnt + 1
             elif 0 <= nx2 < n and 0 <= ny2 < m:  # coin1가 떨어진 경우
