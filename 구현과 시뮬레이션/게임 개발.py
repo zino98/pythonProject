@@ -1,10 +1,10 @@
 N, M = map(int, input().split())
 
-board = [[0] * M for _ in range(N)]
+board = [[0] * M for _ in range(N)]  # 방문
 x, y, dir = map(int, input().split())
 board[x][y] = 1
 
-array = [list(map(int, input().split())) for _ in range(N)]
+array = [list(map(int, input().split())) for _ in range(N)] # 입력
 
 dx = [-1,0,1,0]
 dy = [0,1,0,-1]  # 북, 동, 남, 서
