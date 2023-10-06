@@ -1,9 +1,9 @@
 import sys
-
-N, M = map(int, sys.stdin.readline().split())
+input = sys.stdin.readline
+N, M = map(int, input().split())
 graph = []
 for _ in range(N):
-    graph.append(list(map(int, sys.stdin.readline().split())))
+    graph.append(list(map(int, input().split())))
 
 visited = [[False] * M for _ in range(N)]
 dp = [[-1] * M for _ in range(N)]
