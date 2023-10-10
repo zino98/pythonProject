@@ -1,7 +1,8 @@
 import sys
+input = sys.stdin.readline
 
-l, c = map(int, sys.stdin.readline().split())
-words = sorted(list(map(str, sys.stdin.readline().split())))
+l, c = map(int, input().split())
+words = sorted(list(map(str, input().split())))
 answer = []
 
 def Sol(cnt, idx):

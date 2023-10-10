@@ -16,5 +16,5 @@ while True:
     out = []
     dfs(0, 0)
     if k == 0:
-        exit()
+        break
     print()
