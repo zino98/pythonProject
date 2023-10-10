@@ -27,7 +27,7 @@ def dfs(i, j, dsum, cnt):
         if 0 <= ni < N and 0 <= nj < M and not visited[ni][nj]:
             # 방문 표시 및 제거
             visited[ni][nj] = True
-            dfs(ni, nj,dsum + board[ni][nj], cnt +1)
+            dfs(ni, nj, dsum + board[ni][nj], cnt +1)
             visited[ni][nj] = False
 
 
