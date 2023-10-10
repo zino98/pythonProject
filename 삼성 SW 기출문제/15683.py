@@ -28,13 +28,14 @@ def dfs(depth, graph):
         answer = min(answer, check_zero(graph))
         return
 
-    graph_copy = copy.deepcopy(board)
-    x, y, cctv_type = cctv_list[depth]
-
-    for cctv_dir in cctv_direction[cctv_type]:
-        watch(x,y,cctv_dir,graph_copy)
-        dfs(depth + 1, graph_copy)
+    else:
         graph_copy = copy.deepcopy(board)
+        x, y, cctv_type = cctv_list[depth]
+
+        for cctv_dir in cctv_direction[cctv_type]:
+            watch(x,y,cctv_dir,graph_copy)
+            dfs(depth + 1, graph_copy)
+            graph_copy = copy.deepcopy(board)
 
 def watch(x,y,direction,graph):
     for d in direction:
