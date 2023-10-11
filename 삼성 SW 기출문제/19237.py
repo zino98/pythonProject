@@ -19,8 +19,8 @@ smell = [[[0,0]] * N for _ in range(N)]
 def update_smell():
     for i in range(N):
         for j in range(N):
-            if smell[i][j] > 1:
-                smell[i][j] -= 1
+            if smell[i][j][1] > 1:
+                smell[i][j][1] -= 1
 
             if graph[i][j] != 0:
                 smell[i][j] = [graph[i][j], K]
@@ -38,7 +38,7 @@ def shark_move():
                     nx = x + dx[idx-1]
                     ny = y + dy[idx-1]
 
-                    if 0<= nx < N and  0<= ny < N:
+                    if 0<= nx < N and  0<= ny < N: # 주위에 냄새가 없을 때
                         if smell[nx][ny][1] == 0:
                             directions[graph[x][y] - 1] = idx
 
@@ -54,7 +54,7 @@ def shark_move():
                 if found:
                     continue
 
-                for idx in priorities[graph[x][y] - 1][shark_direction - 1]:
+                for idx in priorities[graph[x][y] - 1][shark_direction - 1]: # 주위에 냄새 가득
                     nx = x + dx[idx - 1]
                     ny = y + dy[idx - 1]
                     if 0 <= nx < N and 0 <= ny < N:
