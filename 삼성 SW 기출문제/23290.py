@@ -5,7 +5,7 @@ board = [[0] * 4 for _ in range(4)]
 fish = [[[[],[]]for _ in range(4)] for _ in range(4)]
 for _ in range(M):
     fish_x, fish_y, fish_dir = map(int, input().split())
-    fish[fish_x-1][fish_y-1].append(fish_dir-1)
+    fish[fish_x-1][fish_y-1][0].append(fish_dir-1)
 
 shark_x, shark_y = map(int, input().split())
 board[shark_x-1][shark_y-1] = 1
@@ -78,20 +78,20 @@ def select_move_shark(x, y, move_cnt, fish_cnt, temp_path):
                 select_move_shark(nx,ny,move_cnt+1,fish_cnt,temp_path+[d])
 
 def move_shark() :
-    global shark_x, shark_y, fish, fish_smell
+    global shark_x, shark_y, fish, smell
     for d in path :
-        x = x + dx[d]
-        y = y + dy[d]
-        if fish[x][y][0] :
-            fish[x][y][0] = []
-            smell[x][y] = 3 # 2가 아닌 3인 이유는 바로 다음 단계에서 1을 감소시키기 떄문
+        shark_x = shark_x + dx[d]
+        shark_y = shark_y + dy[d]
+        if fish[shark_x][shark_y][0]:
+            fish[shark_x][shark_y][0] = []
+            smell[shark_x][shark_y] = 3 # 2가 아닌 3인 이유는 바로 다음 단계에서 1을 감소시키기 떄문
 
 def reduce_smell() :
-    global fish_smell
+    global smell
     for i in range(4) :
         for j in range(4) :
-            if fish_smell[i][j] > 0 :
-                fish_smell[i][j] -= 1
+            if smell[i][j] > 0 :
+                smell[i][j] -= 1
 
 def copy_end() :
     global fish
@@ -101,6 +101,32 @@ def copy_end() :
                 fish[i][j][0].append(fish[i][j][1].pop())
 
 
+for now in range(S) :
+    # 1. 복제 마법 시전 (물고기 복제)
+    copy_start()
+    # 2. 물고기 이동
+    position = move_fish()
+    for r, c, dir in position :
+        fish[r][c][0].append(dir)
+
+    path = []
+    max_fish_count = -1
+
+    # 3. 상어 이동
+    select_move_shark(shark_x, shark_y, 0, 0, [])
+    move_shark()
+
+    # 4. 냄새 감소
+    reduce_smell()
+    # 5. 복제 완료
+    copy_end()
+
+result = 0
+for i in range(4) :
+    for j in range(4) :
+        result += len(fish[i][j][0])
+
+print(result)
 
 
 
